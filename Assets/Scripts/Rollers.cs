@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gear : MonoBehaviour {
+public class Rollers : MonoBehaviour {
     private Rigidbody rb;
-    private bool throttle;
 
     public float torque = 0.3f;
+    public float rotationDirection = 1;
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody>();        
     }
 
     // Update is called once per frame
-    void Update() {
-        throttle = Input.GetKey(KeyCode.Space);                
+    void Update() {      
+              
     }
 
     void FixedUpdate() {
-        if(throttle) {
-            rb.AddTorque(transform.up * torque);
-        }
+        rb.AddTorque(transform.up * torque * 100000 * rotationDirection);
     }
+
+    
 }
